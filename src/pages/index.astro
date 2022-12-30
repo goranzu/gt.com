@@ -1,0 +1,121 @@
+---
+import "modern-css-reset";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Goran Tenić | About">
+  <div class="container">
+    <header class="header">
+      <div class="name">
+        <p>Goran Tenić</p>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="/">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="intro">
+        <img src="/assets/goran.png" alt="Goran" />
+        <p>
+          Hi, my name is Goran and I am a software developer currently working
+          for <a href="https://vxcompany.com/">VX Company</a>.
+        </p>
+        <p>
+          I have experience in a variety of programming languages and am always
+          looking to learn and grow as a developer.
+        </p>
+        <p>
+          You can find me on social media platforms such as <a
+            href="https://github.com/goranzu">GitHub</a
+          >, <a href="https://nl.linkedin.com/">LinkedIn</a>, and <a
+            href="https://twitter.com/">Twitter</a
+          >. <p>Thank you for visiting my website!</p>
+        </p>
+        <!-- <p class="clearfix"></p> -->
+      </div>
+
+      <div class="contact">
+        <h2>Contact</h2>
+        <p>
+          Want to get in touch? You can reach me at the following email address: <a
+            href="mailto:goran@gorantenic.com">goran@gorantenic.com</a
+          >
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>Copyright (c) 2022 Goran Tenić. All rights reserved.</p>
+    </footer>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px;
+  }
+
+  .container > * + * {
+    margin-top: 24px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    // border: 1px solid black;
+
+    .name {
+      font-size: 1.5rem;
+    }
+
+    nav {
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.1rem;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+
+  main {
+    > * + * {
+      margin-top: 24px;
+    }
+
+    .intro > p + p {
+      margin-top: 16px;
+    }
+
+    .intro {
+      img {
+        max-width: 100px;
+        border-radius: 5px;
+        float: right;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .clearfix {
+    clear: both;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+  }
+</style>
