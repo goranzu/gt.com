@@ -1,9 +1,13 @@
 ---
+import "modern-css-reset";
+
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const pathName = new URL(Astro.request.url).pathname;
+const currentPath = pathName.slice(1);
 ---
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
@@ -43,7 +47,32 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="container">
+      <header class="header">
+        <div class="name">
+          <p>Goran Tenić</p>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a class={currentPath === "" ? "active" : ""} href="/">About</a>
+            </li>
+            <!-- <li>
+              <a
+                class={currentPath === "projects" ? "active" : ""}
+                href="/projects">Projects</a
+              >
+            </li> -->
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <p>Copyright (c) 2022 Goran Tenić. All rights reserved.</p>
+      </footer>
+    </div>
   </body>
 </html>
 
@@ -66,5 +95,74 @@ const { title } = Astro.props;
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+
+    > * + * {
+      margin-top: 8px;
+    }
+
+    .name {
+      font-size: 1.5rem;
+    }
+
+    nav {
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 1.1rem;
+
+        display: flex;
+        gap: 24px;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 2px solid hsl(179, 95%, 36%);
+  }
+
+  .active {
+    font-weight: 700;
+  }
+
+  .container {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px;
+  }
+
+  .container > * + * {
+    margin-top: 24px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+    padding: 16px 0;
+  }
+
+  .clearfix {
+    clear: both;
+  }
+
+  main {
+    > * + * {
+      margin-top: 24px;
+    }
   }
 </style>
