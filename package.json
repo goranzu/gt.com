@@ -1,8 +1,11 @@
 {
-  "name": "@example/basics",
+  "name": "gorantenic.com",
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "author": {
+    "name": "Goran Tenić"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
